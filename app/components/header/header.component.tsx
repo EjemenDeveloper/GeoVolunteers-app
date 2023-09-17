@@ -41,7 +41,22 @@ export const HeaderComponent = (props: HeaderComponentParams) => {
             />
           }
         >
+          <Menu.Item title=" About GeoVolunteers App" onPress={goToMyCases} />
+          <Menu.Item title=" User dashboard" onPress={goToMyCases} />
+
+          <Menu.Item title=" My Profile" onPress={goToMyCases} />
+          <Menu.Item title=" Map Integration" onPress={goToMyCases} />
+          <Menu.Item
+            title=" Nearby Volunteer opportunities"
+            onPress={goToMyCases}
+          />
+
+          <Menu.Item title=" Account Settings" onPress={goToMyCases} />
+          <Menu.Item title=" Report an Emergency" onPress={goToMyCases} />
+          <Menu.Item title=" Feedback" onPress={goToMyCases} />
           <Menu.Item title=" My Reported Cases" onPress={goToMyCases} />
+
+          <Menu.Item title=" Admin" onPress={goToMyCases} />
 
           <Menu.Item title=" Logout" onPress={logout} />
         </Menu>

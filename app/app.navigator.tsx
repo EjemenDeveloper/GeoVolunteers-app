@@ -1,6 +1,9 @@
-import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { NavigationContainer } from "@react-navigation/native";
+import React from "react";
+import {
+  NavigationContainer,
+  createNavigationContainerRef,
+} from "@react-navigation/native";
 import HomeScreen from "./screens/home/home.screen";
 import LoginScreen from "./screens/login/login.screen";
 import RegisterScreen from "./screens/register/register.screen";
@@ -9,8 +12,10 @@ import VolunteerRegisterScreen from "./screens/register/volunteerRegister.screen
 import LocationScreen from "./screens/location/location.screen";
 import AddressScreen from "./screens/incidentAddress/address.screen";
 import VolunteersScreen from "./screens/volunteers/volunteers.screen";
+import UserDashboard from "./screens/userDashboard";
 
 const Stack = createNativeStackNavigator();
+export const navigationRef = createNavigationContainerRef();
 
 const AppNavigator = () => (
   <NavigationContainer>
@@ -25,7 +30,7 @@ const AppNavigator = () => (
         name="VolunteerRegister"
         component={VolunteerRegisterScreen}
       />
-      <Stack.Screen name="Location" component={AddressScreen} />
+      <Stack.Screen name="Location" component={UserDashboard} />
       <Stack.Screen name="IncidentCases" component={VolunteersScreen} />
       <Stack.Screen name="VolunteerDetails" component={LocationScreen} />
       <Stack.Screen name="VolunteerDistance" component={LocationScreen} />

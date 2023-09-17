@@ -1,0 +1,39 @@
+import type { ExpoPushMessage } from "expo-server-sdk";
+import { Expo } from "expo-server-sdk";
+
+const expo = new Expo({ accessToken: process.env.EXPO_ACCESS_TOKEN });
+
+type SendPushNotificationProps = {
+  pushToken: string;
+  message: string;
+  data?: object;
+};
+
+ const sendPushNotification = async ({
+  pushToken,
+  message,
+  data,
+}: SendPushNotificationProps): Promise<void> => {
+  const messages: ExpoPushMessage[] = [];
+
+  if (!Expo.isExpoPushToken(pushToken)) {
+    console.error(`Push token ${pushToken} is not a valid Expo push token`);
+    return;
+  }
+  messages.push({
+    to: pushToken,
+    sound: undefined,
+    title: "⚠️Help, A user Needs your Help ⚠️",
+    priority: "high",
+    body: message,
+    data,
+  });
+
+  try {
+    await expo.sendPushNotificationsAsync(messages);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export default sendPushNotification;
